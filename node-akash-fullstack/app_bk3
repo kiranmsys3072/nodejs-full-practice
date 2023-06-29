@@ -1,0 +1,15 @@
+const express=require('express');
+const app=express()
+
+const productRoutes=require('./src/controllers/productRoutes')
+const categoryRoutes=require('./src/controllers/categoryRoutes')
+
+app.get('/',function(req,res){
+    res.send("Home Page")
+})
+app.use('/category',categoryRoutes);
+app.use('/products',productRoutes)
+app.listen(3030,function(err){
+    if(err) throw err
+    console.log(`server running on port 3030`)
+})
